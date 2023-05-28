@@ -3,7 +3,7 @@ module.exports.responseHandler = (data, res, message, status) => {
     let messageData = message || `Success`;
   
     res.status(statusCode).json({
-      status: "success",
+      status: status > 204 ? "error" : "success",
       message: messageData,
       data: data,
     });

@@ -16,7 +16,7 @@ exports.logIn = async (req, res, next) => {
         };
 
         if(!token) {
-            return responseHandler(null, res, 'Invalid Email OR password')
+            return responseHandler(null, res, 'Invalid Email OR password', 400)
         };
 
         const data = {
