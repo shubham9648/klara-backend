@@ -5,13 +5,13 @@ const { user } = require("../../constants/userRoles");
 
 
 const createSuperAdminSchema = Joi.object({
-    email: Joi.string().trim().required(),
+    email: Joi.string().trim().email().required(),
     password: Joi.string().trim().required(),
-    devKey: Joi.string().trim().required().valid('DEVKEY@1947')
+    devKey: Joi.string().trim().required().valid('DORA@KLARA')
 });
 
 const createOrganisationAdminSchema = Joi.object({
-    email: Joi.string().trim().required(),
+    email: Joi.string().trim().email().required(),
     phone: Joi.object({
         work: Joi.string().trim().required(),
         mobile: Joi.string().trim().required()
@@ -35,10 +35,13 @@ const createOrganisationAdminSchema = Joi.object({
     employmentStatus: Joi.string().trim().valid("employed", "unemployed")
 });
 
-
+const logInSchema = Joi.object({
+    email: Joi.string().trim().email().required(),
+    password: Joi.string().trim().required()
+});
 
 module.exports = {
     createSuperAdminSchema,
-    createOrganisationAdminSchema
-    // createUserSchema
+    createOrganisationAdminSchema,
+    logInSchema
 }

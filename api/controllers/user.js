@@ -4,6 +4,33 @@ const service = require('../services/users.js');
 const { user } = require("../../constants/userRoles")
 
 
+exports.logIn = async (req, res, next) => {
+    try {
+
+        const value = req.value;
+
+        const {userData, token} = await service.loginUser(value);
+
+        if(!userData) {
+            return responseHandler(null, res, 'No User!', 400);
+        };
+
+        if(!token) {
+            return responseHandler(null, res, 'Invalid Email OR password')
+        };
+
+        const data = {
+            data: userData,
+            Authorization: token
+        };
+
+        responseHandler(data, res);
+
+    } catch (err) {
+        console.log("error is ", err);
+        next(err);
+    }
+}
 exports.createAdmin = async (req, res, next) => {
     try {
         const value = req.value;

@@ -5,6 +5,7 @@ const { logger } = require("../util/logger");
 module.exports.connect = () => {
   return new Promise((resolve, reject) => {
     let mongoUrl = process.env.NODE_ENV == "production" ? mongoConfig.mongoUrlProd : mongoConfig.mongoUrl;
+    console.log(mongoUrl);
     mongoose
       .connect(mongoUrl, mongoConfig.mongoOptions.options)
       .then((connection) => {
