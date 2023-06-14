@@ -7,19 +7,21 @@ const validate = require('../../middleware/validator'); // Validator
 const {
     createSuperAdmin,
     createAdmin,
-    logIn
+    logIn,
+    createUser
 } = require('../controllers/user');
 
 const {
     createSuperAdminSchema,
     createOrganisationAdminSchema,
-    logInSchema
+    logInSchema,
+    createUserSchema
 } = require("../validators/user");
 
 
 router.route('/createSuperAdmin').post(validate(createSuperAdminSchema), createSuperAdmin);
-router.route('/createUser').post(validate(createOrganisationAdminSchema), verifyToken, handleRole, createAdmin)
+router.route('/createAdmin').post(validate(createOrganisationAdminSchema), verifyToken, handleRole, createAdmin)
 router.route('/login').post(validate(logInSchema), logIn);
-
+router.route('/createUser').post(validate(createUserSchema), createUser);
 
 module.exports = router;

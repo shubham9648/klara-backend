@@ -6,10 +6,7 @@ const profileSchema = Schema({
     username: {
         type: String
     },
-    firstName: {
-        type: String
-    },
-    lastName: {
+    fullName: {
         type: String
     },
     dob: {
@@ -67,6 +64,18 @@ const userSchema = Schema({
         default: true
     },
     online: {
+        type: Boolean,
+        default: false
+    },
+    isNewsLetter: {
+        type: Boolean,
+        default: false
+    },
+    isAggrement: {
+        type: Boolean,
+        default: false
+    },
+    isInformation: {
         type: Boolean,
         default: false
     },

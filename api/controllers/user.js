@@ -78,3 +78,26 @@ exports.createSuperAdmin = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.createUser = async (req, res, next) => {
+    try {
+        const value = req.value;
+
+        if(!value.isNewsLetter || !value.isAggrement || !value.isInformation) {
+            return responseHandler(null, res, "Please check all fields!!", 400);
+        };
+
+        value.roles = ["user"];
+
+        const response = await service.createUser(value);
+
+        if(response.err) {
+            return responseHandler(null, res, response.err, 400);
+        }
+        responseHandler(response, res);
+
+    } catch (err) {
+        console.log("error is ", err);
+        next(err);
+    }
+}

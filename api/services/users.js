@@ -121,7 +121,16 @@ exports.createUser = async (body) => {
     // commit transactions ..
     await session.commitTransaction();
     session.endSession();
-    return await dal.create(model, body);
+    const user =  await dal.create(model, body);
+    const userData = {
+      userId: user._id,
+      email: user.email,
+      phone: user?.phone,
+      roles: user.roles,
+      fullName: user?.fullName,
+    };
+    const token = await getToken(userData);
+    return {userData, token}
   } catch (err) {
     await session.abortTransaction();
     session.endSession();
