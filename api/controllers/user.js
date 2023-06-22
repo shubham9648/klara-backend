@@ -1,6 +1,6 @@
 const { responseHandler } = require('../../middleware/response-handler');
 const Error = require('../../middleware/error-handler');
-const service = require('../services/users.js');
+const service = require('../services/users');
 const { user } = require("../../constants/userRoles")
 
 
@@ -30,7 +30,8 @@ exports.logIn = async (req, res, next) => {
         console.log("error is ", err);
         next(err);
     }
-}
+};
+
 exports.createAdmin = async (req, res, next) => {
     try {
         const value = req.value;
@@ -100,4 +101,4 @@ exports.createUser = async (req, res, next) => {
         console.log("error is ", err);
         next(err);
     }
-}
+};
