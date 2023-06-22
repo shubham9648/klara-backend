@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const mongoConfig = require("../config/mongo");
 const { logger } = require("../util/logger");
 
+// https://www.linkedin.com/dashboard/
 module.exports.connect = () => {
   return new Promise((resolve, reject) => {
     let mongoUrl = process.env.NODE_ENV == "production" ? mongoConfig.mongoUrlProd : mongoConfig.mongoUrl;
-    console.log(mongoUrl);
     mongoose
       .connect(mongoUrl, mongoConfig.mongoOptions.options)
       .then((connection) => {
