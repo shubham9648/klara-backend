@@ -1,6 +1,6 @@
 const { responseHandler } = require('../../middleware/response-handler');
 const Error = require('../../middleware/error-handler');
-const service = require('../services/contactUs.js');
+const service = require('../services/masterService');
 
 
 
@@ -14,6 +14,8 @@ exports.create = async (req, res, next) => {
         value.addedBy = addedBy;
 
         const response = await service.create(value);
+
+        console.log("response is ", response);
 
         responseHandler(response, res);
 
@@ -42,7 +44,7 @@ exports.search = async (req, res, next) => {
 
         const [response, count] = await Promise.allSettled([result, document]);
 
-        responseHandler({response: response.value, count: count.value});
+        responseHandler({response: response.value, count: count.value}, res);
 
     } catch (err) {
         console.log("eroror is ", err);

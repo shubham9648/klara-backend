@@ -15,16 +15,14 @@ const user = {
 };
 
 
-// const diagnostic = {
-//     handlers: {
-//         create: [user.roles.superAdmin, user.roles.hospitalAdmin, user.roles.branchAdmin],
-//         update: [user.roles.superAdmin, user.roles.hospitalAdmin, user.roles.branchAdmin],
-//         deleteHospital: [user.roles.superAdmin, user.roles.hospitalAdmin, user.roles.branchAdmin]
-//     }
-// };
+const masterService = {
+    handlers: {
+        create: [user.roles.superAdmin]
+    }
+};
 
 
 module.exports = {
     user,
-    // diagnostic
+    masterService
 }
