@@ -1,4 +1,4 @@
-const model = require("../models/contactUs");
+const model = require("../models/masterService");
 const dal = require("../helpers/dal")
 
 exports.create = async (body) => {
