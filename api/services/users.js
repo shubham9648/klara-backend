@@ -178,3 +178,12 @@ exports.loginUser = async ({ email, password }) => {
 //   console.log({ userData, token });
   return { userData, token };
 };
+
+
+exports.find = async (filter) => {
+  return await dal.find(model, filter);
+};
+
+exports.countDocument = async (filter) => {
+  return await dal.countDocuments(model, filter);
+}

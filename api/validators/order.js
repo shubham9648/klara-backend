@@ -10,7 +10,9 @@ const createOrderSchema = Joi.object({
     havePet: Joi.boolean().required(),
     petName: Joi.array().items(Joi.string().trim()),
     donateToEmployee: Joi.boolean(),
-    donatedAmount: Joi.number()
+    donatedAmount: Joi.number(),
+    address: Joi.string().trim(),
+    notes: Joi.string().trim()
 });
 
 const updateOrderSchema = Joi.object({
@@ -21,7 +23,10 @@ const updateOrderSchema = Joi.object({
     havePet: Joi.boolean(),
     petName: Joi.array().items(Joi.string().trim()),
     donateToEmployee: Joi.boolean(),
-    donatedAmount: Joi.number()
+    donatedAmount: Joi.number(),
+    address: Joi.string().trim(),
+    notes: Joi.string().trim(),
+    employeeId: Joi.string().trim().required()
 });
 
 module.exports = {

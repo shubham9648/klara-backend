@@ -7,6 +7,7 @@ const user = require('../api/routes/user');
 const contactUs = require("../api/routes/contactUs");
 const order = require("../api/routes/order");
 const masterService = require("../api/routes/masterService");
+const notification = require("../api/routes/notification");
 
 module.exports.default = (app) => {
     app.use(express.json());
@@ -17,6 +18,7 @@ module.exports.default = (app) => {
     app.use('/api/v1/contactUs', contactUs);
     app.use('/api/v1/order', order);
     app.use('/api/v1/masterService', masterService);
+    app.use('/api/v1/notification', notification);
 
     app.use('/success',(req,res)=>{
         console.log("req.body",req.body),

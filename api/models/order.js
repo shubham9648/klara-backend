@@ -9,10 +9,16 @@ const orderSchema = Schema({
     date: {
         type: Date
     },
+    notes: {
+        type: String
+    },
     service: {
         type: [{
             type: Schema.ObjectId
         }]
+    },
+    address: {
+        type: String
     },
     houseArea: {
         type: Number
