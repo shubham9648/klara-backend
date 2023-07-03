@@ -8,7 +8,8 @@ const {
     createSuperAdmin,
     createAdmin,
     logIn,
-    createUser
+    createUser,
+    search
 } = require('../controllers/user');
 
 const {
@@ -23,5 +24,7 @@ router.route('/createSuperAdmin').post(validate(createSuperAdminSchema), createS
 router.route('/createAdmin').post(validate(createOrganisationAdminSchema), verifyToken, handleRole, createAdmin)
 router.route('/login').post(validate(logInSchema), logIn);
 router.route('/createUser').post(validate(createUserSchema), createUser);
+router.route('/').get(verifyToken, search);
+
 
 module.exports = router;

@@ -102,3 +102,35 @@ exports.createUser = async (req, res, next) => {
         next(err);
     }
 };
+
+
+exports.search = async (req, res, next) => {
+    try {
+
+        const reqQuery = req.query;
+        const pagination = { skip: 0, limit: 30 };
+        if (reqQuery.pageNo && reqQuery.pageSize) {
+            pagination.skip = parseInt((reqQuery.pageNo - 1) * reqQuery.pageSize);
+            pagination.limit = parseInt(reqQuery.pageSize);
+        }
+        
+        const filter = {}
+        if(reqQuery.refrenceId) filter.name = ObjectId(reqQuery.refrenceId);
+        if(reqQuery.id) filter['_id'] = ObjectId(reqQuery.id);
+        if(reqQuery.status) filter['status'] = reqQuery.status;
+        if(reqQuery.role) filter['roles'] = reqQuery.role
+
+        const result =  service.find(filter, pagination);
+        const document = service.countDocument(filter);
+
+        const [response, count] = await Promise.allSettled([result, document]);
+
+        responseHandler({response: response.value, count: count.value}, res);
+
+
+
+    } catch (err) {
+        console.log("error is ", err);
+        next(err);
+    }
+}

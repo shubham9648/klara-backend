@@ -1,7 +1,7 @@
 const { responseHandler } = require('../../middleware/response-handler');
 const Error = require('../../middleware/error-handler');
-const service = require('../services/order.js');
-
+const service = require('../services/order');
+const { notify } = require("../controllers/notification")
 
 
 exports.create = async (req, res, next) => {
@@ -15,6 +15,11 @@ exports.create = async (req, res, next) => {
 
         const response = await service.create(value);
 
+        await notify({
+            refrenceId: value.employeeId,
+            orderId: response._id,
+            addedBy: addedBy
+        });
         responseHandler(response, res);
 
     } catch (err) {
