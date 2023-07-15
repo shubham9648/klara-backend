@@ -3,6 +3,7 @@ Schema = mongoose.Schema;
 
 
 const notificationSchema = Schema({
+    
     refrenceId: {
         type: Schema.ObjectId
     },
@@ -13,6 +14,10 @@ const notificationSchema = Schema({
     },
     orderId: {
         type: Schema.ObjectId
+    },
+    active: {
+        type: Boolean,
+        default: true
     },
     addedBy: {
         type: Schema.ObjectId

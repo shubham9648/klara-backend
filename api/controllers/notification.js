@@ -44,7 +44,7 @@ exports.search = async (req, res, next) => {
 
         const baseQuery = [
             {
-                '$match': filter
+                '$match': {...filter, active: true}
               },
         ];
 
@@ -67,6 +67,15 @@ exports.search = async (req, res, next) => {
                 'from': 'orders', 
                 'localField': 'orderId', 
                 'foreignField': '_id', 
+                pipeline: [
+                    {
+                      $lookup: {
+                        from: "masterservices",
+                        localField: "service",
+                        foreignField: "_id", 
+                        as: "service"
+                      }
+                    }],
                 'as': 'orderDetails'
               }
             }, {
@@ -87,9 +96,9 @@ exports.search = async (req, res, next) => {
                 'preserveNullAndEmptyArrays': true
               }
             }, {
-              '$skip': 0
+              '$skip': pagination.skip
             }, {
-              '$limit': 1
+              '$limit': pagination.limit
             },
             {
                 $sort: {
