@@ -38,8 +38,8 @@ exports.search = async (req, res, next) => {
         }
         
         const filter = {}
-        if(reqQuery.refrenceId) filter.name = ObjectId(reqQuery.refrenceId);
-        if(reqQuery.id) filter['_id'] = ObjectId(reqQuery.id);
+        if(reqQuery.refrenceId) filter.name = new ObjectId(reqQuery.refrenceId);
+        if(reqQuery.id) filter['_id'] = new ObjectId(reqQuery.id);
         if(reqQuery.status) filter['status'] = reqQuery.status;
 
         const baseQuery = [
