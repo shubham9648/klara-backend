@@ -15,7 +15,7 @@ exports.countDocument = async (filter) => {
 
 exports.search = async (query) => {
     const data = await dal.aggregate(model, query);
-
+    // console.log("data is ", JSON.stringify(data));
     return {
         data: data[0].data,
         count: data[0].count ? data[0].count[0].count : 0 

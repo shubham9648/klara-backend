@@ -21,6 +21,7 @@ const createOrganisationAdminSchema = Joi.object({
         username: Joi.string().trim().required(),
         firstName: Joi.string().trim().required(),
         lastName: Joi.string().trim().required(),
+        imageUrl: Joi.string().trim(),
         dob: Joi.date().required(),
         employeeId: Joi.string(),
     }).required(),
