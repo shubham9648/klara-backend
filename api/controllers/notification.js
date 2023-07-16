@@ -125,3 +125,19 @@ exports.search = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.updateOne = async (req, res, next) => {
+    try {
+
+        const value = req.body;
+
+        const id = req.params.id;
+
+        const response = await service.updateOne(id, value);
+
+        return responseHandler(response, res);
+    } catch (err) {
+        console.log("error is ", err);
+        next(err);
+    }
+}

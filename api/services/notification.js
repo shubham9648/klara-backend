@@ -20,4 +20,8 @@ exports.search = async (query) => {
         data: data[0].data,
         count: data[0].count ? data[0].count[0].count : 0 
     }
+};
+
+exports.updateOne = async (id, body) => {
+    return await dal.findOneAndUpdate(model, {_id: id}, {$set: body})
 }

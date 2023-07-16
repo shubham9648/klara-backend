@@ -3,7 +3,6 @@ Schema = mongoose.Schema;
 
 
 const notificationSchema = Schema({
-    
     refrenceId: {
         type: Schema.ObjectId
     },
