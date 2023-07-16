@@ -6,7 +6,8 @@ const validate = require('../../middleware/validator'); // Validator
 
 const {
     create,
-    search
+    search,
+    updateOne
 } = require('../controllers/notification');
 
 // const {
@@ -16,7 +17,7 @@ const {
 
 router.route('/').post(verifyToken,  create);
 router.route('/').get(verifyToken, search);
-// router.route('/:id').put(verifyToken, upd)
+router.route('/:id').put(verifyToken, updateOne)
 
 
 module.exports = router;

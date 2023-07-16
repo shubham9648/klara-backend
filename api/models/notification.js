@@ -14,6 +14,10 @@ const notificationSchema = Schema({
     orderId: {
         type: Schema.ObjectId
     },
+    active: {
+        type: Boolean,
+        default: true
+    },
     addedBy: {
         type: Schema.ObjectId
     }
