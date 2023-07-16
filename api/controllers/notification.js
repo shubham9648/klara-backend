@@ -106,16 +106,22 @@ exports.search = async (req, res, next) => {
                 }
             }
           ]
-
+          console.log("baseQuery is ----> ",JSON.stringify(baseQuery));
+        const countQuery = [
+            ...baseQuery,
+            {
+                $count: 'count'
+            }
+        ]
         const dataQuery = [
             {
                 $facet: {
                     data: query,
-                    count: baseQuery
+                    count: countQuery
                 }
             }
         ]  
-        
+        console.log("dataQuery is ", JSON.stringify(dataQuery));
         const response = await service.search(dataQuery);
 
         responseHandler(response, res);
