@@ -2,7 +2,7 @@ const { responseHandler } = require('../../middleware/response-handler');
 const Error = require('../../middleware/error-handler');
 const service = require('../services/users');
 const { user } = require("../../constants/userRoles")
-
+const { ObjectId } = require("mongodb")
 
 exports.logIn = async (req, res, next) => {
     try {
@@ -115,8 +115,8 @@ exports.search = async (req, res, next) => {
         }
         
         const filter = {}
-        if(reqQuery.refrenceId) filter.name = ObjectId(reqQuery.refrenceId);
-        if(reqQuery.id) filter['_id'] = ObjectId(reqQuery.id);
+        if(reqQuery.refrenceId) filter.name = new ObjectId(reqQuery.refrenceId);
+        if(reqQuery.id) filter['_id'] = new ObjectId(reqQuery.id);
         if(reqQuery.status) filter['status'] = reqQuery.status;
         if(reqQuery.role) filter['roles'] = reqQuery.role
 
