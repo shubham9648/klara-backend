@@ -18,7 +18,7 @@ const { notification } = require("../../constants/userRoles")
 
 router.route('/').post(verifyToken,  create);
 router.route('/').get(verifyToken, search);
-router.route('/:id').put(verifyToken,allowEitherRole(notification.handlers.update), updateOne)
+router.route('/:id').put(verifyToken, updateOne);
 
 
 module.exports = router;

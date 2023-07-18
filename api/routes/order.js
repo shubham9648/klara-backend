@@ -16,7 +16,7 @@ const {
 const { order } = require("../../constants/userRoles")
 
 
-router.route('/').post(validate(createOrderSchema), verifyToken, allowEitherRole(order),  create);
+router.route('/').post(validate(createOrderSchema), verifyToken,  create);
 router.route('/').get(verifyToken, search);
 // router.route('/:id').put(verifyToken, upd)
 

@@ -25,7 +25,7 @@ router.route('/createSuperAdmin').post(validate(createSuperAdminSchema), createS
 router.route('/createAdmin').post(validate(createOrganisationAdminSchema), verifyToken, handleRole, createAdmin)
 router.route('/login').post(validate(logInSchema), logIn);
 router.route('/createUser').post(validate(createUserSchema), createUser);
-router.route('/').get(verifyToken,allowEitherRole(userDetail.handlers.search), search);
+router.route('/').get(verifyToken, search);
 
 
 module.exports = router;
