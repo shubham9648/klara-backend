@@ -12,6 +12,7 @@ const {
     search
 } = require('../controllers/user');
 
+const { userDetail } = require("../../constants/userRoles")
 const {
     createSuperAdminSchema,
     createOrganisationAdminSchema,
@@ -24,7 +25,7 @@ router.route('/createSuperAdmin').post(validate(createSuperAdminSchema), createS
 router.route('/createAdmin').post(validate(createOrganisationAdminSchema), verifyToken, handleRole, createAdmin)
 router.route('/login').post(validate(logInSchema), logIn);
 router.route('/createUser').post(validate(createUserSchema), createUser);
-router.route('/').get(verifyToken, search);
+router.route('/').get(verifyToken,allowEitherRole(userDetail.handlers.search), search);
 
 
 module.exports = router;

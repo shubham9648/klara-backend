@@ -28,8 +28,17 @@ const notification = {
     }
 };
 
+const userDetail = {
+    handlers: {
+        create: [user.roles.superAdmin],
+        update: [user.roles.superAdmin, user.roles.organisationAdmin, user.roles.employee],
+        search: [user.roles.superAdmin, user.roles.organisationAdmin, user.roles.employee]
+    }
+};
+
 module.exports = {
     user,
     masterService,
-    notification
+    notification,
+    userDetail
 }
