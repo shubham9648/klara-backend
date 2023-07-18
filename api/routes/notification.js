@@ -10,6 +10,7 @@ const {
     updateOne
 } = require('../controllers/notification');
 
+const { notification } = require("../../constants/userRoles")
 // const {
 //     createOrderSchema
 // } = require("../validators/order");
@@ -17,7 +18,7 @@ const {
 
 router.route('/').post(verifyToken,  create);
 router.route('/').get(verifyToken, search);
-router.route('/:id').put(verifyToken, updateOne)
+router.route('/:id').put(verifyToken,allowEitherRole(notification.handlers.update), updateOne)
 
 
 module.exports = router;

@@ -21,8 +21,15 @@ const masterService = {
     }
 };
 
+const notification = {
+    handlers: {
+        create: [user.roles.superAdmin, user.roles.organisationAdmin, user.roles.employee],
+        update: [user.roles.superAdmin, user.roles.organisationAdmin, user.roles.employee]
+    }
+};
 
 module.exports = {
     user,
-    masterService
+    masterService,
+    notification
 }

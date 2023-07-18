@@ -14,7 +14,7 @@ const {
 } = require("../validators/order");
 
 
-router.route('/').post(validate(createOrderSchema),verifyToken,  create);
+router.route('/').post(validate(createOrderSchema), verifyToken, allowEitherRole("user"),  create);
 router.route('/').get(verifyToken, search);
 // router.route('/:id').put(verifyToken, upd)
 
