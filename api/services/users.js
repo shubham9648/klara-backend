@@ -181,7 +181,7 @@ exports.loginUser = async ({ email, password }) => {
 
 
 exports.find = async (filter) => {
-  return await dal.find(model, filter);
+  return await dal.find(model, filter, {}, {createdAt: -1});
 };
 
 exports.countDocument = async (filter) => {
