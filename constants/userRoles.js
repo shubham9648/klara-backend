@@ -36,9 +36,17 @@ const userDetail = {
     }
 };
 
+const order = {
+    handlers: {
+        create: [user.roles.user]
+        // search: [user.roles.superAdmin, user.roles.organisationAdmin, user.roles.employee]
+    }
+};
+
 module.exports = {
     user,
     masterService,
     notification,
-    userDetail
+    userDetail,
+    order
 }
