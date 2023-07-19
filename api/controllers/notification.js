@@ -146,4 +146,4 @@ exports.updateOne = async (req, res, next) => {
         console.log("error is ", err);
         next(err);
     }
-}
+};

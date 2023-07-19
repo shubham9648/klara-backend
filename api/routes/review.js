@@ -8,7 +8,7 @@ const {
     create,
     search,
     updateOne
-} = require('../controllers/notification');
+} = require('../controllers/review');
 
 const { notification } = require("../../constants/userRoles")
 // const {
