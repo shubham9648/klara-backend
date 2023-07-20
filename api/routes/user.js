@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken, allowEitherRole, handleRole } = require('../../middleware/auth'); // Auth Verification
-const validate = require('../../middleware/validator'); // Validator
+const validate  = require('../../middleware/validator'); // Validator
 
 
 const {
