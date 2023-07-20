@@ -116,7 +116,7 @@ exports.search = async (req, res, next) => {
         
         const filter = {}
         if(reqQuery.refrenceId) filter.name = new ObjectId(reqQuery.refrenceId);
-        if(reqQuery.id) filter['_id'] = new ObjectId(reqQuery.id);
+        if(reqQuery.id) filter['_id'] = new xObjectId(reqQuery.id);
         if(reqQuery.status) filter['status'] = reqQuery.status;
         if(reqQuery.role) filter['roles'] = reqQuery.role
 
